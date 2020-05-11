@@ -1,0 +1,38 @@
+﻿@model PasswordlessInputModel
+@{
+    ViewData["Title"] = "Passwordless Identity :: Log in with email";
+}
+
+
+<div class="kt-login__container">
+    <div class="kt-login__logo">
+        <a href="#">
+            <img src="~/media/logo.svg">
+        </a>
+    </div>
+    <div class="kt-login__signin">
+        <div class="kt-login__head">
+            <h3 class="kt-login__title">Sign In</h3>
+        </div>
+
+        <form asp-route="passwordless-submit" class="kt-form" autocomplete="off">
+            <partial name="_ValidationSummary" />
+
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div class="input-group">
+                <input asp-for="Email" type="email" class="form-control" placeholder="Email" name="email" autocomplete="off">
+            </div>
+            <div class="row kt-login__extra">
+
+                <div class="col kt-align-right">
+                    <a asp-route="login" asp-all-route-data="@(new Dictionary<string, string> { { "ReturnUrl", Model.ReturnUrl } })" class="kt-login__link">Sign in with password</a>
+                </div>
+            </div>
+            <div class="kt-login__actions">
+                <button class="btn btn-brand btn-elevate kt-login__btn-primary">Sign In</button>
+            </div>
+
+        </form>
+    </div>
+</div>

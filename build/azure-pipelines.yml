@@ -1,0 +1,28 @@
+trigger:
+  branches:
+    include:
+      - master
+      - develop
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  - script: docker login $(repositoryName) -u $(repositoryUsername) -p $(repositoryPassword)
+    displayName: "Login To Repository"
+
+  - script: docker build -f ./src/DanielBogdan.Passwordless.Identity/Dockerfile -t $(repositoryName)/passwordless-identity:$(appVersion).$(build.buildNumber) .
+    displayName: "Build Image"
+
+  - script: docker push $(repositoryName)/passwordless-identity:$(appVersion).$(build.buildNumber)
+    displayName: "Push Image"
+
+  - task: CopyFiles@2
+    inputs:
+      contents: "_kube/**/*.@(yml|yaml|json)"
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      artifactName: "passwordless-identity"
+      targetPath: $(Build.ArtifactStagingDirectory)

@@ -1,0 +1,26 @@
+﻿@model PasswordlessInputModel
+@{
+    ViewData["Title"] = "Passwordless Identity :: Success";
+}
+
+
+<div class="kt-login__container">
+    <div class="kt-login__logo">
+        <a href="#">
+            <img src="~/media/logo.svg">
+        </a>
+    </div>
+    <div class="kt-login__signin">
+        <div class="kt-login__head">
+            <h3 class="kt-login__title">Sign In</h3>
+            <div class="kt-login__desc">Authentication link sent to</div>
+        </div>
+        <div class="text-center">
+            <p class="text-primary font-weight-bold">@Model.Email</p>
+            <p>Please check your email and follow the instructions.</p>
+        </div>
+        <div class="kt-login__actions text-center mt-5">
+            <a asp-route="passwordless" class="btn btn-brand btn-elevate kt-login__btn-primary">Go back</a>
+        </div>
+    </div>
+</div>

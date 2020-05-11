@@ -1,0 +1,139 @@
+﻿@model ErrorViewModel
+@inject IOptionsMonitor<SiteConfiguration> Configuration
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Passwordless Identity :: Error";
+}
+
+@section Styles {
+    <style>
+
+        .error-block-main-pcdp {
+            height: 80vh;
+        }
+
+        .error-block-main-pcdp .outer-error {
+            position: absolute;
+            left: 50%;
+            top: 40%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .outer-error {
+            max-width: 520px;
+            width: 100%;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .outer-error .inner-error {
+            position: relative;
+            height: 240px;
+        }
+
+        .outer-error .inner-error h1 {
+            font-family: "Muli", sans-serif !important;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            font-size: 252px;
+            font-weight: 900;
+            margin: 0px;
+            text-transform: uppercase;
+            letter-spacing: -40px;
+            margin-left: -20px;
+            color: #5d78ff;
+        }
+
+        .outer-error .inner-error h1 > span {
+            text-shadow: -8px 0px 0px #fff;
+        }
+
+        .outer-error .inner-error h3 {
+            font-family: "Muli", sans-serif !important;
+            position: relative;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #262626;
+            margin: 0px;
+            letter-spacing: 3px;
+            padding-left: 6px;
+        }
+
+        .outer-error h2 {
+            font-family: "Muli", sans-serif !important;
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #000;
+            margin-top: 0px;
+            margin-bottom: 25px;
+        }
+
+        @@media only screen and (max-width: 767px) {
+            .outer-error .inner-error {
+                height: 200px;
+            }
+
+            .outer-error .inner-error h1 {
+                font-size: 200px;
+            }
+        }
+
+        @@media only screen and (max-width: 480px) {
+            .outer-error .inner-error {
+                height: 162px;
+            }
+
+            .outer-error .inner-error h1 {
+                font-size: 162px;
+                height: 150px;
+                line-height: 162px;
+            }
+
+            .outer-error h2 {
+                font-size: 16px;
+            }
+        }
+    </style>
+}
+
+
+<div class="error-block-main-pcdp">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="outer-error">
+                    <div class="inner-error">
+                        <h3>@Model.Title</h3>
+                        <h1>
+                            @if(Model.StatusCode != null)
+                            {
+                            <span>@(Model.StatusCode.ToString()[0])</span><span>@(Model.StatusCode.ToString()[1])</span><span>@(Model.StatusCode.ToString()[2])</span>
+                            }
+                            else
+                            {
+                            <span>5</span><span>0</span><span>0</span>
+                            }
+                        </h1>
+                    </div>
+                    <h2>@Model.Description</h2>
+                    <a asp-route="passwordless" class="btn btn-brand btn-elevate kt-login__btn-primary">Take me to the home page</a>
+                    <environment names="development,staging">
+                        <div>
+                            <h4>@Model?.IdentityError?.Error</h4>
+                            <div>@Model?.IdentityError?.ErrorDescription</div>
+                            <div>@Model?.IdentityError?.RequestId</div>
+                        </div>
+                    </environment>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

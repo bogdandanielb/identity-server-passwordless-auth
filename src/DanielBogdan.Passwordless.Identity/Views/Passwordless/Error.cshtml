@@ -1,0 +1,24 @@
+@model PasswordlessErrorModel
+@{
+    ViewData["Title"] = "Passwordless Identity :: Error";
+}
+
+<div class="kt-login__container">
+    <div class="kt-login__logo">
+        <a href="#">
+            <img src="~/media/logo.svg">
+        </a>
+    </div>
+    <div class="kt-login__signin">
+        <div class="kt-login__head">
+            <h3 class="kt-login__title">Sign In</h3>
+            <div class="kt-login__desc">Authentication error</div>
+        </div>
+        <div class="text-center">
+            <p class="text-warning font-weight-bold">@Html.Raw(Model.Message)</p>
+        </div>
+        <div class="kt-login__actions text-center mt-5">
+            <a asp-route="passwordless" class="btn btn-brand btn-elevate kt-login__btn-primary">Go back</a>
+        </div>
+    </div>
+</div>

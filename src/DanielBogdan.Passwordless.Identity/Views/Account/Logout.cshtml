@@ -1,0 +1,25 @@
+﻿@model LogoutViewModel
+
+<div class="kt-login__container">
+    <div class="kt-login__logo">
+        <a href="#">
+            <img src="~/media/logo.svg">
+        </a>
+    </div>
+    <div class="kt-login__signin">
+        <div class="kt-login__head">
+            <h3 class="kt-login__title">Log out?</h3>
+        </div>
+
+        <form asp-route="logout-submit" class="kt-form" autocomplete="off">
+            <partial name="_ValidationSummary" />
+
+            <input type="hidden" asp-for="LogoutId" />
+
+            <div class="kt-login__actions">
+                <button type="submit" class="btn btn-brand btn-elevate kt-login__btn-primary">Yes</button>
+            </div>
+        </form>
+    </div>
+</div>
+

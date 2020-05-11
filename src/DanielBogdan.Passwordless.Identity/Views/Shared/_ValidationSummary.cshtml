@@ -1,0 +1,10 @@
+﻿@if (ViewContext.ModelState.IsValid == false)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <div class="alert-text" asp-validation-summary="All">
+        </div>
+        <div class="alert-close">
+            <i class="flaticon2-cross kt-icon-sm" data-dismiss="alert"></i>
+        </div>
+    </div>
+}

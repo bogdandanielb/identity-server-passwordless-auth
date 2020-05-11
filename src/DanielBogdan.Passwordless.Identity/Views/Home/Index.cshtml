@@ -1,0 +1,18 @@
+﻿@inject IOptionsMonitor<SiteConfiguration> Configuration
+
+
+<div class="kt-login__container">
+    <div class="kt-login__logo">
+        <a href="#">
+            <img src="~/media/logo.svg">
+        </a>
+    </div>
+    <div class="kt-login__signin">
+        <div class="kt-login__head">
+            <h3 class="kt-login__title">Passwordless Identity</h3>
+        </div>
+        <div class="kt-login__actions text-center mt-5">
+            <a href="@Configuration.CurrentValue.AngularClientUrl" class="btn btn-brand btn-elevate kt-login__btn-primary">Go to main client application</a>
+        </div>
+    </div>
+</div>
